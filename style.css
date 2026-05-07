@@ -1,0 +1,40 @@
+.glass-nav {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(229, 231, 235, 0.5);
+}
+.hero-gradient {
+    background: radial-gradient(circle at top right, rgba(37, 99, 235, 0.1), transparent 40%),
+                radial-gradient(circle at bottom left, rgba(79, 70, 229, 0.1), transparent 40%);
+}
+.cursor-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #2563eb;
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.1s;
+}
+.cursor-outline {
+    width: 40px;
+    height: 40px;
+    border: 2px solid rgba(37, 99, 235, 0.3);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9998;
+    transition: transform 0.15s, top 0.15s, left 0.15s;
+}
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
+}
+.animate-float {
+    animation: float 6s ease-in-out infinite;
+}
+#back-to-top {
+    display: none;
+}

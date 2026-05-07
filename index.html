@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tughluk Digital | Modern Websites & Digital Tools for Toronto Businesses</title>
+    <meta name="description" content="Professional WordPress websites, digital menus, and WhatsApp automation for local businesses in Toronto and Scarborough. Multilingual support in English, Turkish, Chinese, and Uyghur.">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- AOS Animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563eb',
+                        secondary: '#4f46e5',
+                        accent: '#f59e0b',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(229, 231, 235, 0.5);
+        }
+        .hero-gradient {
+            background: radial-gradient(circle at top right, rgba(37, 99, 235, 0.1), transparent 40%),
+                        radial-gradient(circle at bottom left, rgba(79, 70, 229, 0.1), transparent 40%);
+        }
+        .cursor-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #2563eb;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s;
+        }
+        .cursor-outline {
+            width: 40px;
+            height: 40px;
+            border: 2px solid rgba(37, 99, 235, 0.3);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9998;
+            transition: transform 0.15s, top 0.15s, left 0.15s;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        #back-to-top {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-white text-slate-900 font-sans selection:bg-primary selection:text-white">
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot hidden md:block" id="cursor-dot"></div>
+    <div class="cursor-outline hidden md:block" id="cursor-outline"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300 py-4" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex-shrink-0 flex items-center">
+                    <span class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
+                        Tughluk Digital
+                    </span>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#services" class="hover:text-primary transition-colors font-medium">Services</a>
+                    <a href="#process" class="hover:text-primary transition-colors font-medium">Process</a>
+                    <a href="#about" class="hover:text-primary transition-colors font-medium">About</a>
+                    <a href="#contact" class="px-6 py-2.5 bg-primary text-white rounded-full font-semibold hover:bg-secondary transition-all shadow-lg hover:shadow-primary/30">
+                        Get Started
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="text-slate-600 hover:text-primary focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl" id="menu-icon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-100 px-4 pt-2 pb-6 space-y-4 absolute w-full left-0 shadow-xl">
+            <a href="#services" class="mobile-link block text-lg font-medium hover:text-primary transition-colors">Services</a>
+            <a href="#process" class="mobile-link block text-lg font-medium hover:text-primary transition-colors">Process</a>
+            <a href="#about" class="mobile-link block text-lg font-medium hover:text-primary transition-colors">About</a>
+            <a href="#contact" class="mobile-link block w-full text-center py-3 bg-primary text-white rounded-xl font-semibold hover:bg-secondary transition-all">Get Started</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden hero-gradient">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-4xl mx-auto">
+                <div data-aos="fade-up" class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-50 text-primary text-sm font-semibold mb-6">
+                    <span class="relative flex h-2 w-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                    </span>
+                    <span>Serving Toronto & Scarborough</span>
+                </div>
+                <h1 data-aos="fade-up" data-aos-delay="100" class="text-5xl md:text-7xl font-extrabold tracking-tight mb-8 leading-[1.1] animate-float">
+                    Modern Websites for <br>
+                    <span class="text-primary">Local Businesses</span>
+                </h1>
+                <p data-aos="fade-up" data-aos-delay="200" class="text-xl text-slate-600 mb-10 leading-relaxed max-w-2xl mx-auto">
+                    Professional WordPress sites, digital menus, and WhatsApp automation. High-quality digital presence without the agency price tag.
+                </p>
+                <div data-aos="fade-up" data-aos-delay="300" class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="#contact" class="px-8 py-4 bg-primary text-white rounded-full font-bold text-lg hover:bg-secondary transition-all shadow-xl shadow-primary/20 flex items-center justify-center">
+                        Get a Free Sample
+                        <i class="fa-solid fa-arrow-right ml-2 text-sm"></i>
+                    </a>
+                    <a href="https://wa.me/your-number" class="px-8 py-4 bg-white text-slate-900 border border-slate-200 rounded-full font-bold text-lg hover:border-primary hover:text-primary transition-all flex items-center justify-center">
+                        <i class="fa-brands fa-whatsapp mr-2 text-xl text-green-500"></i>
+                        Message on WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Decorative elements -->
+        <div class="absolute top-1/2 left-0 -translate-y-1/2 -translate-x-1/2 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 right-0 translate-x-1/4 w-64 h-64 bg-secondary/10 rounded-full blur-3xl"></div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Everything Your Business Needs Online</h2>
+                <div class="w-20 h-1.5 bg-primary mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div data-aos="fade-up" data-aos-delay="100" class="p-8 rounded-3xl bg-slate-50 hover:bg-white border border-transparent hover:border-blue-100 hover:shadow-2xl hover:shadow-blue-500/5 transition-all group">
+                    <div class="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-brands fa-wordpress text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">WordPress Websites</h3>
+                    <p class="text-slate-600 leading-relaxed">Fast, secure, and easy-to-manage websites tailored for your business goals.</p>
+                </div>
+
+                <!-- Service 2 -->
+                <div data-aos="fade-up" data-aos-delay="200" class="p-8 rounded-3xl bg-slate-50 hover:bg-white border border-transparent hover:border-blue-100 hover:shadow-2xl hover:shadow-blue-500/5 transition-all group">
+                    <div class="w-14 h-14 bg-green-100 rounded-2xl flex items-center justify-center text-green-600 mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-utensils text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Digital Menus & QR</h3>
+                    <p class="text-slate-600 leading-relaxed">Interactive menus that look great on smartphones. Perfect for local restaurants and cafes.</p>
+                </div>
+
+                <!-- Service 3 -->
+                <div data-aos="fade-up" data-aos-delay="300" class="p-8 rounded-3xl bg-slate-50 hover:bg-white border border-transparent hover:border-blue-100 hover:shadow-2xl hover:shadow-blue-500/5 transition-all group">
+                    <div class="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-brands fa-whatsapp text-3xl text-green-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">WhatsApp Business</h3>
+                    <p class="text-slate-600 leading-relaxed">Setup click-to-chat buttons and automated customer flows to capture every lead.</p>
+                </div>
+
+                <!-- Service 4 -->
+                <div data-aos="fade-up" data-aos-delay="400" class="p-8 rounded-3xl bg-slate-50 hover:bg-white border border-transparent hover:border-blue-100 hover:shadow-2xl hover:shadow-blue-500/5 transition-all group">
+                    <div class="w-14 h-14 bg-orange-100 rounded-2xl flex items-center justify-center text-orange-600 mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-location-dot text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Google Business Setup</h3>
+                    <p class="text-slate-600 leading-relaxed">Get found on Google Maps. We optimize your profile to attract more local customers.</p>
+                </div>
+
+                <!-- Service 5 -->
+                <div data-aos="fade-up" data-aos-delay="500" class="p-8 rounded-3xl bg-slate-50 hover:bg-white border border-transparent hover:border-blue-100 hover:shadow-2xl hover:shadow-blue-500/5 transition-all group">
+                    <div class="w-14 h-14 bg-purple-100 rounded-2xl flex items-center justify-center text-purple-600 mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-palette text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Simple Branding</h3>
+                    <p class="text-slate-600 leading-relaxed">Clean logos and professional visual identity that makes your brand stand out.</p>
+                </div>
+
+                <!-- Service 6 -->
+                <div data-aos="fade-up" data-aos-delay="600" class="p-8 rounded-3xl bg-slate-50 hover:bg-white border border-transparent hover:border-blue-100 hover:shadow-2xl hover:shadow-blue-500/5 transition-all group">
+                    <div class="w-14 h-14 bg-red-100 rounded-2xl flex items-center justify-center text-red-600 mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-mobile-screen text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Mobile Optimization</h3>
+                    <p class="text-slate-600 leading-relaxed">100% responsive designs that ensure your customers have a great experience on any device.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <div class="lg:w-1/2" data-aos="fade-right">
+                    <div class="relative">
+                        <div class="aspect-square rounded-3xl bg-gradient-to-br from-primary to-secondary rotate-3 absolute inset-0 -z-10 opacity-10"></div>
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800" alt="Consultation" class="rounded-3xl shadow-2xl">
+                    </div>
+                </div>
+                <div class="lg:w-1/2" data-aos="fade-left">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6 leading-tight">Bridging the Gap for Toronto's Diverse Businesses</h2>
+                    <p class="text-lg text-slate-600 mb-6 leading-relaxed">
+                        I help local shops and restaurants in Toronto and Scarborough look professional online without the "big agency" price tag or technical headaches.
+                    </p>
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-start">
+                            <div class="mt-1 w-6 h-6 rounded-full bg-blue-100 text-primary flex items-center justify-center flex-shrink-0">
+                                <i class="fa-solid fa-check text-xs"></i>
+                            </div>
+                            <p class="ml-4 font-medium text-slate-700">Multilingual Support: English, Turkish, Chinese, and Uyghur.</p>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="mt-1 w-6 h-6 rounded-full bg-blue-100 text-primary flex items-center justify-center flex-shrink-0">
+                                <i class="fa-solid fa-check text-xs"></i>
+                            </div>
+                            <p class="ml-4 font-medium text-slate-700">Fixed pricing - no hidden agency fees.</p>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="mt-1 w-6 h-6 rounded-full bg-blue-100 text-primary flex items-center justify-center flex-shrink-0">
+                                <i class="fa-solid fa-check text-xs"></i>
+                            </div>
+                            <p class="ml-4 font-medium text-slate-700">Real, local support for real businesses.</p>
+                        </div>
+                    </div>
+                    <a href="#contact" class="inline-block text-primary font-bold text-lg hover:underline underline-offset-8 transition-all">
+                        Let's work together
+                        <i class="fa-solid fa-arrow-right ml-2 text-sm"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Simple 3-Step Process</h2>
+                <div class="w-20 h-1.5 bg-primary mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
+                <!-- Connecting line (desktop) -->
+                <div class="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-slate-100 -z-10 translate-y-[-50px]"></div>
+
+                <!-- Step 1 -->
+                <div class="text-center group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-20 h-20 bg-white border-4 border-slate-50 rounded-full flex items-center justify-center mx-auto mb-8 shadow-xl group-hover:border-primary transition-colors relative z-10">
+                        <span class="text-2xl font-bold text-primary">01</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Chat</h3>
+                    <p class="text-slate-600">Tell me about your business and goals. No tech jargon, just a simple conversation.</p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="text-center group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-20 h-20 bg-white border-4 border-slate-50 rounded-full flex items-center justify-center mx-auto mb-8 shadow-xl group-hover:border-primary transition-colors relative z-10">
+                        <span class="text-2xl font-bold text-primary">02</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Build</h3>
+                    <p class="text-slate-600">I create a modern, high-quality digital experience tailored specifically for your customers.</p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="text-center group" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-20 h-20 bg-white border-4 border-slate-50 rounded-full flex items-center justify-center mx-auto mb-8 shadow-xl group-hover:border-primary transition-colors relative z-10">
+                        <span class="text-2xl font-bold text-primary">03</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Launch</h3>
+                    <p class="text-slate-600">We go live and I show you how to manage everything effortlessly. I'm here if you need help.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-24 bg-slate-50 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+                <div data-aos="fade-right">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Recent Projects</h2>
+                    <p class="text-slate-600 max-w-xl">See how we've helped other Toronto businesses stand out online.</p>
+                </div>
+                <a href="#contact" data-aos="fade-left" class="text-primary font-bold hover:underline underline-offset-8">View all projects</a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div data-aos="zoom-in" data-aos-delay="100" class="group cursor-pointer">
+                    <div class="relative overflow-hidden rounded-3xl mb-6">
+                        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80&w=800" alt="Restaurant Site" class="w-full aspect-[4/3] object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <span class="bg-white text-primary px-6 py-2 rounded-full font-bold shadow-lg">View Site</span>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2">Modern Dining Website</h3>
+                    <p class="text-slate-500">Digital Menu & Online Presence</p>
+                </div>
+
+                <div data-aos="zoom-in" data-aos-delay="200" class="group cursor-pointer">
+                    <div class="relative overflow-hidden rounded-3xl mb-6">
+                        <img src="https://images.unsplash.com/photo-1556740734-7f9a2b7a0f4d?auto=format&fit=crop&q=80&w=800" alt="Shop Site" class="w-full aspect-[4/3] object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <span class="bg-white text-primary px-6 py-2 rounded-full font-bold shadow-lg">View Site</span>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2">Local Shop E-commerce</h3>
+                    <p class="text-slate-500">Inventory & Online Ordering</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-slate-900 rounded-[3rem] p-8 md:p-16 relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-primary/20 rounded-full blur-[100px]"></div>
+
+                <div class="relative z-10 flex flex-col lg:flex-row gap-16">
+                    <div class="lg:w-1/2 text-white" data-aos="fade-right">
+                        <h2 class="text-4xl md:text-5xl font-bold mb-8 leading-tight">Ready to boost your <span class="text-primary">online presence?</span></h2>
+                        <p class="text-slate-400 text-lg mb-12">Stop waiting and start growing. Get a free sample of what we can build for your business.</p>
+
+                        <div class="space-y-6">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-primary">
+                                    <i class="fa-solid fa-envelope"></i>
+                                </div>
+                                <span class="text-lg">hello@tughluk.digital</span>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-green-500">
+                                    <i class="fa-brands fa-whatsapp"></i>
+                                </div>
+                                <span class="text-lg">Message us on WhatsApp</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg:w-1/2" data-aos="fade-left">
+                        <form class="space-y-4">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <input type="text" placeholder="Your Name" class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-primary transition-colors">
+                                <input type="email" placeholder="Email Address" class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-primary transition-colors">
+                            </div>
+                            <input type="text" placeholder="Business Name" class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-primary transition-colors">
+                            <textarea rows="4" placeholder="Tell us about your project" class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-primary transition-colors"></textarea>
+                            <button class="w-full py-4 bg-primary text-white rounded-2xl font-bold text-lg hover:bg-secondary transition-all shadow-xl shadow-primary/20">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back to Top -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 z-50 w-12 h-12 bg-primary text-white rounded-full shadow-lg items-center justify-center hover:bg-secondary transition-all">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+                <div class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
+                    Tughluk Digital
+                </div>
+                <div class="flex space-x-8 text-slate-500">
+                    <a href="#" class="hover:text-primary">Privacy Policy</a>
+                    <a href="#" class="hover:text-primary">Terms of Service</a>
+                </div>
+                <div class="text-slate-400">
+                    &copy; 2023 Tughluk Digital. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100,
+        });
+
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        const backToTop = document.getElementById('back-to-top');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-md', 'py-2');
+                navbar.classList.remove('py-4');
+                backToTop.style.display = 'flex';
+            } else {
+                navbar.classList.remove('shadow-md', 'py-2');
+                navbar.classList.add('py-4');
+                backToTop.style.display = 'none';
+            }
+        });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        const toggleMenu = () => {
+            mobileMenu.classList.toggle('hidden');
+            menuIcon.classList.toggle('fa-bars');
+            menuIcon.classList.toggle('fa-times');
+        };
+
+        mobileMenuButton.addEventListener('click', toggleMenu);
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (!mobileMenu.classList.contains('hidden')) {
+                    toggleMenu();
+                }
+            });
+        });
+
+        // Custom Cursor
+        const cursorDot = document.getElementById('cursor-dot');
+        const cursorOutline = document.getElementById('cursor-outline');
+
+        // Enable custom cursor only on devices with a mouse
+        if (window.matchMedia("(pointer: fine)").matches) {
+            document.body.classList.add('cursor-none');
+
+            window.addEventListener('mousemove', (e) => {
+                const posX = e.clientX;
+                const posY = e.clientY;
+
+                cursorDot.style.left = `${posX}px`;
+                cursorDot.style.top = `${posY}px`;
+
+                cursorOutline.animate({
+                    left: `${posX}px`,
+                    top: `${posY}px`
+                }, { duration: 150, fill: "forwards" });
+            });
+
+            // Hover effect for cursor
+            const interactables = document.querySelectorAll('a, button, input, textarea');
+            interactables.forEach(item => {
+                item.addEventListener('mouseenter', () => {
+                    cursorOutline.style.transform = 'scale(1.5)';
+                    cursorOutline.style.backgroundColor = 'rgba(37, 99, 235, 0.1)';
+                    cursorDot.style.transform = 'scale(0.5)';
+                });
+                item.addEventListener('mouseleave', () => {
+                    cursorOutline.style.transform = 'scale(1)';
+                    cursorOutline.style.backgroundColor = 'transparent';
+                    cursorDot.style.transform = 'scale(1)';
+                });
+            });
+        } else {
+            // Hide custom cursor elements on touch devices
+            cursorDot.style.display = 'none';
+            cursorOutline.style.display = 'none';
+        }
+    </script>
+</body>
+</html>
